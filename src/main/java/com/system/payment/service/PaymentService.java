@@ -16,7 +16,7 @@ public class PaymentService {
 
     @RabbitListener(queues = "payment.queue")
     public void processPayment(SaleDTO saleDTO) {
-        System.out.println("Payment: Validando pagamento para: " + saleDTO);
+        System.out.println("Payment: Validando pagamento para: " + saleDTO.getId());
 
         rabbitTemplate.convertSendAndReceive("stock.queue", saleDTO);
     }
